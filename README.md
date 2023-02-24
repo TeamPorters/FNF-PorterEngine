@@ -25,4 +25,4 @@ nothing really rn
 
 
 
-                                                                                                                                     1.0.0 - © 2023 Team Porters
+ <p align="right">1.0.0 - © 2023 Team Porters</p>
