@@ -3361,11 +3361,8 @@ class PlayState extends MusicBeatState
 			var numScore:FlxSprite = new FlxSprite().loadGraphic(Paths.image(pixelShitPart1 + 'num' + Std.int(i) + pixelShitPart2));
 			numScore.cameras = [camHUD];
 			numScore.screenCenter();
-			numScore.x = coolText.x + (43 * daLoop) - 90;
-			numScore.y += 80;
-
-			numScore.x += ClientPrefs.comboOffset[2];
-			numScore.y -= ClientPrefs.comboOffset[3];
+			numScore.x = comboSpr.x;
+			numScore.y += comboSpr.y + 80;
 
 			if (!PlayState.isPixelStage)
 			{
@@ -3373,9 +3370,7 @@ class PlayState extends MusicBeatState
 				numScore.setGraphicSize(Std.int(numScore.width * 0.5));
 			}
 			else
-			{
 				numScore.setGraphicSize(Std.int(numScore.width * daPixelZoom));
-			}
 			numScore.updateHitbox();
 
 			numScore.acceleration.y = FlxG.random.int(200, 300);
@@ -3383,7 +3378,7 @@ class PlayState extends MusicBeatState
 			numScore.velocity.x = FlxG.random.float(-5, 5);
 			numScore.visible = !ClientPrefs.hideHud;
 
-			if (combo >= 10 || combo == 0)
+			if (combo >= 10)
 				insert(members.indexOf(strumLineNotes), numScore);
 
 			FlxTween.tween(numScore, {alpha: 0}, 0.2, {
@@ -3418,7 +3413,6 @@ class PlayState extends MusicBeatState
 	{
 		var eventKey:FlxKey = event.keyCode;
 		var key:Int = getKeyFromEvent(eventKey);
-		//trace('Pressed: ' + eventKey);
 
 		if (!cpuControlled && !paused && key > -1 && (FlxG.keys.checkStatus(eventKey, JUST_PRESSED) || ClientPrefs.controllerMode))
 		{
@@ -3432,7 +3426,6 @@ class PlayState extends MusicBeatState
 
 				// heavily based on my own code LOL if it aint broke dont fix it
 				var pressNotes:Array<Note> = [];
-				//var notesDatas:Array<Int> = [];
 				var notesStopped:Bool = false;
 
 				var sortedNotesList:Array<Note> = [];
@@ -3443,7 +3436,6 @@ class PlayState extends MusicBeatState
 						if(daNote.noteData == key)
 						{
 							sortedNotesList.push(daNote);
-							//notesDatas.push(daNote.noteData);
 						}
 						canMiss = true;
 					}
