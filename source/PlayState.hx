@@ -3362,7 +3362,7 @@ class PlayState extends MusicBeatState
 			numScore.cameras = [camHUD];
 			numScore.screenCenter();
 			numScore.x = comboSpr.x;
-			numScore.y += comboSpr.y + 80;
+			numScore.y = comboSpr.y + 80;
 
 			if (!PlayState.isPixelStage)
 			{
