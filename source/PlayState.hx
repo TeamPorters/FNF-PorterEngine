@@ -3301,17 +3301,19 @@ class PlayState extends MusicBeatState
 			pixelShitPart2 = '-pixel';
 		}
 
-		rating.loadGraphic(Paths.image(pixelShitPart1 + daRating + pixelShitPart2));
-		rating.cameras = [camHUD];
-		rating.screenCenter();
-		rating.x = coolText.x - 40;
-		rating.y -= 60;
-		rating.acceleration.y = 550;
-		rating.velocity.y -= FlxG.random.int(140, 175);
-		rating.velocity.x -= FlxG.random.int(0, 10);
-		rating.visible = !ClientPrefs.hideHud;
-		rating.x += ClientPrefs.comboOffset[0];
-		rating.y -= ClientPrefs.comboOffset[1];
+		playerStrums.forEachAlive((note:StrumNote) -> {
+			notes.forEachAlive((daNote:Note) -> {
+				rating.loadGraphic(Paths.image(pixelShitPart1 + daRating + pixelShitPart2));
+				rating.cameras = [camHUD];
+				rating.screenCenter();
+				rating.x = note.x - daNote.noteData % 4;
+				rating.y = note.y - 100;
+				rating.acceleration.y = 550;
+				rating.velocity.y -= FlxG.random.int(140, 175);
+				rating.velocity.x -= FlxG.random.int(0, 10);
+				rating.visible = !ClientPrefs.hideHud;
+			});
+		});
 
 		var comboSpr:FlxSprite = new FlxSprite().loadGraphic(Paths.image(pixelShitPart1 + 'combo' + pixelShitPart2));
 
