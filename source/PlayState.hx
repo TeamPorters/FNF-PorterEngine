@@ -3315,13 +3315,12 @@ class PlayState extends MusicBeatState
 
 		var comboSpr:FlxSprite = new FlxSprite().loadGraphic(Paths.image(pixelShitPart1 + 'combo' + pixelShitPart2));
 
-		strumLineNotes.forEachAlive((note:StrumNote) -> {
+		playerStrums.forEachAlive((note:StrumNote) -> {
 			notes.forEachAlive((daNote:Note) -> {
 				comboSpr.cameras = [camHUD];
 				comboSpr.screenCenter();
-				@:privateAccess
-				comboSpr.x = note.x % note.noteData % 4;
-				comboSpr.y = note.y - 50;
+				comboSpr.x = note.x % daNote.noteData % 4;
+				comboSpr.y = note.y + 100;
 				comboSpr.acceleration.y = 600;
 				comboSpr.velocity.y -= 150;
 				comboSpr.visible = !ClientPrefs.hideHud;
