@@ -3308,8 +3308,8 @@ class PlayState extends MusicBeatState
 				rating.screenCenter();
 				rating.x = note.x - daNote.noteData % 4;
 				rating.y = note.y + 50;
-				rating.acceleration.y = 150;
-				rating.velocity.y -= FlxG.random.int(140, 175);
+				rating.acceleration.y = 10;
+				rating.velocity.y -= FlxG.random.int(10, 30);
 				rating.velocity.x -= FlxG.random.int(0, 10);
 				rating.visible = !ClientPrefs.hideHud;
 			});
