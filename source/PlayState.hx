@@ -3306,7 +3306,19 @@ class PlayState extends MusicBeatState
 				rating.loadGraphic(Paths.image(pixelShitPart1 + daRating + pixelShitPart2));
 				rating.cameras = [camHUD];
 				rating.screenCenter();
-				rating.x = note.x - daNote.noteData % 4;
+				// rating.x = note.x - 100 - daNote.noteData % 4;
+				switch (daNote.noteData % 4){
+					case 0:
+						rating.x = 100;
+					case 1:
+						rating.x = 150;
+					case 2:
+						rating.x = 200;
+					case 3:
+						rating.x = 250;
+					case 4:
+						rating.x = 300;				
+				}
 				rating.y = note.y + 50;
 				rating.acceleration.y = 10;
 				rating.velocity.y -= 10;
