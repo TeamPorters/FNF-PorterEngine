@@ -3309,18 +3309,18 @@ class PlayState extends MusicBeatState
 				// rating.x = note.x - 100 - daNote.noteData % 4;
 				switch (daNote.noteData % 4){
 					case 0:
-						rating.x = 600;
-					case 1:
-						rating.x = 650;
-					case 2:
-						rating.x = 700;
-					case 3:
-						rating.x = 750;
-					case 4:
 						rating.x = 800;
+					case 1:
+						rating.x = 900;
+					case 2:
+						rating.x = 1000;
+					case 3:
+						rating.x = 1100;
+					case 4:
+						rating.x = 1200;
 				}
 				rating.y = note.y + 50;
-				rating.acceleration.y = 10;
+				// rating.acceleration.y = 10;
 				rating.velocity.y -= 10;
 				rating.visible = !ClientPrefs.hideHud;
 			});
